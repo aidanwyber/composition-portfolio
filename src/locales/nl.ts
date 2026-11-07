@@ -2,7 +2,7 @@ import type { Copy } from './en';
 
 export const nl: Copy = {
 	seo: {
-		title: 'Aidan Wyber — Componist voor film & bewegend beeld',
+		title: 'Aidan Wyber — Composities, opnamen & partituren',
 		description:
 			'Aidan Wyber is componist en muziekproducent uit Den Haag. Originele muziek voor film, animatie en visuele producties.',
 	},
@@ -32,9 +32,8 @@ export const nl: Copy = {
 		compositionBy: 'Compositie van',
 	},
 	hero: {
-		profession: 'Zelfstandig componist en muziekproducent',
-		headline: ['Originele muziek', 'voor bewegend beeld.'],
-		supporting: ['Instrumentaal. Elektronisch.', 'Gemaakt voor beeld.'],
+		headline: ['Instrumentale, elektronische', 'en generatieve muziek.'],
+		supporting: ['Eigen composities,', 'opnamen en partituren.'],
 		availability:
 			'Beschikbaar voor compositieopdrachten voor film, animatie en andere visuele producties.',
 		explore: 'Ontdek het werk',
@@ -67,7 +66,30 @@ export const nl: Copy = {
 		still: 'Projectbeeld',
 		videoLabel: 'Video',
 	},
+	scores: {
+		title: 'Partituren',
+		preview: 'Eerste pagina van de partituur',
+		pages: 'pagina’s',
+		newTab: 'Opent in een nieuw tabblad',
+	},
 	projects: {
+		'etudes-voor-cello': {
+			title: 'Études voor cello',
+			description:
+				'Een verzameling cellostudies. De volledige partituur van tien pagina’s is beschikbaar als PDF.',
+			category: 'Partituur',
+			instrumentation: 'Cello',
+			role: 'Componist',
+		},
+		'de-toekomst-in': {
+			title: 'De Toekomst In',
+			description:
+				'Een compositie voor twee cello’s. De volledige partituur van twee pagina’s is beschikbaar als PDF.',
+			category: 'Partituur',
+			instrumentation: 'Twee cello’s',
+			role: 'Componist',
+		},
+
 		'01': {
 			title: 'Instrumentale studie',
 			description:
@@ -97,11 +119,17 @@ export const nl: Copy = {
 			role: 'Voeg rol als componist / producent toe',
 		},
 	},
+	catalogue: {
+		independent: 'Eigen werk',
+		commissioned: 'Werk in opdracht',
+		layout: 'Weergave',
+		list: 'Lijst',
+		grid: 'Raster',
+	},
 	releases: {
-		title: 'Eigen werk',
-		metadata: 'Albums / Aidan Wyber',
+		title: 'Albums',
 		tracks: 'Nummers',
-		details: 'Over de compositie',
+		details: 'Meer over deze compositie',
 		listen: 'Luister op',
 		artwork: 'Albumhoes',
 		artworkMissing: 'Albumhoes volgt',
@@ -114,7 +142,7 @@ export const nl: Copy = {
 			details: [],
 		},
 		'substructures': {
-			genres: 'Ambient / Experimenteel',
+			genres: 'Ambient',
 			description:
 				'Muziek als onderlaag van de ervaring. Substructures ontstond vanuit een periode van aandacht voor de eigen aandacht: hoe verschillende vormen van bewustzijn, waarneming en emotie elkaar afwisselen en soms uiteenvallen. De muziek is bedoeld om een ervaring te kleuren en te omlijsten, zonder noodzakelijkerwijs op de voorgrond te treden.',
 			details: [],
@@ -139,10 +167,51 @@ export const nl: Copy = {
 	},
 	contact: {
 		title: 'Contact',
-		headline: ['Laten we iets', 'in beweging zetten.'],
+		headline: ['Welk verhaal vraagt', 'om muziek?'],
 		supporting:
-			'Beschikbaar voor filmmuziek, originele composities en samenwerkingen.',
+			'Vertel me over je project. Een eerste idee of ruwe montage is genoeg.',
+		action: 'Bespreek je project',
 		socials: 'Sociale profielen',
 	},
-	footer: { country: 'Nederland', top: 'Terug naar boven' },
+	faq: {
+		title: 'Vragen & antwoorden',
+		items: [
+			{
+				id: 'practice',
+				question: 'Wie is Aidan Wyber?',
+				answer: 'Aidan Wyber is zelfstandig componist en muziekproducent, gevestigd in Den Haag. Zijn praktijk combineert instrumentale compositie, elektronische productie en sounddesign, naast experimenteel werk met generatieve muzikale systemen.',
+				target: 'about',
+				link: 'Over Aidan',
+			},
+			{
+				id: 'commissions',
+				question: 'Kan ik muziek laten componeren voor film of animatie?',
+				answer: 'Aidan Wyber is beschikbaar voor originele muziek bij film, animatie en andere visuele projecten. Neem contact op om je idee, de gewenste sfeer en de planning te bespreken. Een eerste idee of ruwe montage is genoeg om het gesprek te beginnen.',
+				target: 'contact',
+				link: 'Bespreek je project',
+			},
+			{
+				id: 'listening',
+				question: 'Waar kan ik de muziek beluisteren?',
+				answer: 'In het albumoverzicht staan As The Sun Rises, Substructures en generative_variations.py. Bij elke uitgave vind je links naar de beschikbare muziekdiensten. Je kunt er ook voor kiezen om de Spotify-speler op deze website te openen.',
+				target: 'releases',
+				link: 'Ontdek de albums',
+			},
+			{
+				id: 'scores',
+				question: 'Welke partituren zijn beschikbaar?',
+				answer: 'In het partituuroverzicht staan Études voor cello en De Toekomst In. Bij elke partituur staan de bezetting en het aantal pagina’s. Met de knop Bekijk partituur open je de originele PDF in een nieuw tabblad.',
+				target: 'scores',
+				link: 'Bekijk de partituren',
+			},
+			{
+				id: 'generative',
+				question: 'Wat betekent generatieve muziek in dit werk?',
+				answer: 'Bij generatieve muziek ontwikkelen muzikale structuren zich via regels of algoritmen. In generative_variations.py werkt een Python-algoritme een kleine muzikale basis uit tot composities, met regels voor noten, harmonie, ritme en instrumentale lijnen. Het project onderzoekt de relatie tussen muzikale systemen, toeval en auteurschap.',
+				target: 'generative',
+				link: 'Over generative_variations.py',
+			},
+		],
+	},
+	footer: { top: 'Terug naar boven' },
 };

@@ -7,6 +7,7 @@
 	import ListeningLinks from '#components/ListeningLinks';
 	import SpotifyPlayer from '#components/SpotifyPlayer';
 	import { media, externalLink } from '#lib/media';
+	import WorkMetadata from '#components/WorkMetadata';
 	let { data } = $props();
 	const copy = $derived(data.copy);
 	const work = $derived(data.work);
@@ -18,23 +19,23 @@
 	<main id="main" class="container work-detail" tabindex="-1">
 		<a
 			class="detail-back"
-			href={`/${data.lang}/#${work.kind === 'album' ? 'releases' : 'work'}`}
+			href={`/${data.lang}/#${work.score ? 'scores' : 'releases'}`}
 			>← {copy.detail.back}</a
 		>
 		<h1>{work.title}</h1>
-		<p class="detail-meta">
-			{work.year || ''}{work.year ? ' / ' : ''}{work.genres}
-		</p>
+		<WorkMetadata {work} {copy} />
 		<div class="detail-layout">
 			{#if work.image}<div class="detail-artwork">
 					<Image
 						file={work.image}
-						alt={`${work.kind === 'album' ? copy.releases.artwork : copy.media.still}: ${work.title}`}
+						alt={`${work.score ? copy.scores.preview : work.kind === 'album' ? copy.releases.artwork : copy.media.still}: ${work.title}`}
 						className={work.kind === 'album' ?
 							'album-cover'
-						:	'detail-image'}
+						:	work.score ? 'score-page' : 'detail-image'}
 						eager
 						square={work.kind === 'album'}
+						width={work.score ? 595 : 640}
+						height={work.score ? 842 : 400}
 					/>
 				</div>{/if}
 			<div class="detail-prose">
@@ -45,7 +46,7 @@
 						links={work.links}
 						title={work.title}
 						listenLabel={copy.releases.listen}
-					/>{#if score}<a href={score}>{copy.work.score} ↗</a>{/if}
+					/>{#if score}<a class="score-button" href={score} target="_blank" rel="noopener noreferrer" aria-label={`${copy.work.score}: ${work.title} — ${copy.scores.newTab}`}>{copy.work.score} <span aria-hidden="true">↗</span></a>{/if}
 				</div>
 				<SpotifyPlayer
 					url={work.links.find(link => link.platform === 'spotify')
@@ -53,7 +54,7 @@
 					title={work.title}
 					{copy}
 				/>
-				{#if work.audio || (!work.video && !work.links.some(link => link.platform === 'spotify'))}<div
+				{#if work.audio}<div
 						class="detail-audio"
 					>
 						<Audio

@@ -4,7 +4,7 @@ const xml = readFileSync('build/sitemap.xml', 'utf8');
 const urls = [...xml.matchAll(/<loc>(.*?)<\/loc>/g)].map(
 	match => new URL(match[1]),
 );
-assert.ok(urls.length >= 8, 'Two portfolios and six album pages must exist');
+assert.ok(urls.length >= 12, 'Two portfolios, six album pages and four score pages must exist');
 assert.equal(
 	new Set(urls.map(String)).size,
 	urls.length,
@@ -12,6 +12,7 @@ assert.equal(
 );
 const entities = new Map();
 const titles = new Set();
+const contactEmail = readFileSync('src/data/site.ts', 'utf8').match(/email: '([^']+)'/)[1];
 for (const url of urls) {
 	const html = readFileSync(`build${url.pathname}index.html`, 'utf8');
 	const lang = url.pathname.split('/')[1];
@@ -80,8 +81,37 @@ for (const url of urls) {
 		}
 	}
 	for (const match of html.matchAll(/(?:src|href)="(\/assets\/[^"?#]+)"/g))
-		assert.ok(existsSync(`build${match[1]}`), match[1]);
+		assert.ok(existsSync(`build${decodeURI(match[1])}`), match[1]);
 	assert.ok(!html.includes('react-dom'));
+	assert.ok(!html.includes('your-email@example.com'), 'No placeholder enquiry address');
+	if (url.pathname === `/${lang}/`) {
+		assert.deepEqual([...html.matchAll(/href="mailto:([^"]+)"/g)].map(match => match[1]), [contactEmail, contactEmail]);
+		assert.ok(html.includes('id="work"') && html.includes('id="scores"'));
+		assert.ok(!html.includes('id="showreel"') && !html.includes('Editable sample') && !html.includes('Bewerkbaar voorbeeld'));
+		const faq = data['@graph'].filter(entity => entity['@type'] === 'FAQPage');
+		assert.equal(faq.length, 1, 'One FAQ entity on each homepage');
+		const footer = html.match(/<footer\b[^>]*>([\s\S]*?)<\/footer>/)[1];
+		assert.match(footer, /<details\b[^>]*\bid="faq"/, 'Q&A is in the footer');
+		assert.ok(!/<details\b[^>]*\bid="faq"[^>]*\bopen/.test(footer), 'Q&A starts collapsed');
+		assert.ok(faq[0].mainEntity.length > 0);
+		const escapeText = value => value.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;');
+		for (const question of faq[0].mainEntity) {
+			assert.equal(question['@type'], 'Question');
+			assert.equal(question.acceptedAnswer['@type'], 'Answer');
+			assert.ok(footer.includes(`id="${question['@id'].split('#')[1]}"`));
+			assert.ok(footer.includes(escapeText(question.name)), 'Question exists in prerendered footer');
+			assert.ok(footer.includes(escapeText(question.acceptedAnswer.text)), 'Structured answer matches visible HTML');
+		}
+	} else {
+		assert.ok(!data['@graph'].some(entity => entity['@type'] === 'FAQPage'), 'Shared FAQ markup is limited to the homepages');
+	}
+	if (/\/(etudes-voor-cello|de-toekomst-in)\/$/.test(url.pathname)) {
+		assert.ok(!/\sdownload(?:[=\s>])/.test(html), 'Scores are viewed online, without a download action');
+		assert.match(html, /href="\/assets\/scores\/[^"]+\.pdf" target="_blank"/, 'PDF opens in a new tab');
+		assert.ok(/href="\/assets\/scores\/[^\"]+\.pdf"/.test(html), 'Real score PDF is linked');
+		assert.ok(!html.includes('Recording forthcoming') && !html.includes('Opname volgt'));
+		assert.ok(data['@graph'].some(entity => entity['@type'] === 'MusicComposition'));
+	}
 }
 assert.ok(
 	readFileSync('build/robots.txt', 'utf8').includes(

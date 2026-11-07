@@ -195,9 +195,11 @@ Recommended roles:
 
 Do not use excessive letter spacing or turn every label into uppercase text.
 
-### Display typeface: Instrument Serif
+### Display typeface: Cormorant Garamond
 
-Use Instrument Serif as the contrasting display face.
+Use Cormorant Garamond as the contrasting display face.
+
+Owner selection, 7 November 2026: Cormorant Garamond is the chosen display family for this implementation. Space Grotesk remains the functional reading face.
 
 Recommended roles:
 
@@ -205,7 +207,7 @@ Recommended roles:
 - occasional large editorial statements;
 - selected poetic or expressive accents.
 
-Use Regular as the default. Italic may be used selectively when it adds a meaningful contrast. Do not use it for long passages, small metadata, or decorative flourishes.
+Use Medium (500) as the default for stronger contrast. Italic may be used selectively when it adds a meaningful contrast. Do not use it for long passages, small metadata, or decorative flourishes.
 
 ### Optional technical typeface: IBM Plex Mono
 
@@ -234,7 +236,7 @@ The hierarchy may change when a particular work calls for it. The composer's nam
 ### Font sources
 
 - Space Grotesk: https://fonts.google.com/specimen/Space+Grotesk
-- Instrument Serif: https://fonts.google.com/specimen/Instrument+Serif
+- Cormorant Garamond: https://fonts.google.com/specimen/Cormorant+Garamond
 - IBM Plex Mono: https://fonts.google.com/specimen/IBM+Plex+Mono
 
 Check the current licence and include font files or webfont references appropriately in any implementation. Google Fonts families are generally available under open font licences; verify the licence files for the exact versions used.
@@ -434,14 +436,13 @@ This section is important. Do not treat every suggestion in this document as an 
 - Generative imagery is the preferred image source.
 - Lines are the primary material of the generative imagery.
 - Space Grotesk is the body / primary typeface.
-- A contrasting free display typeface is wanted; Instrument Serif is the current recommendation.
+- Cormorant Garamond is the chosen contrasting display typeface.
 - The palette should be restrained and mostly monochrome.
 - The identity should allow individual compositions to have distinct visual expressions.
 
 ### Provisional recommendations
 
 - Core colours and hex values.
-- Instrument Serif as the final display typeface.
 - IBM Plex Mono as an optional technical typeface.
 - The four exploratory generative families described above.
 - Layout proportions, margins, and export formats.
@@ -486,7 +487,7 @@ Use this checklist when reviewing a generated image, cover, page, or other appli
 ### Typography and information
 
 - [ ] Is Space Grotesk used for functional text?
-- [ ] Is Instrument Serif used selectively as a display voice?
+- [ ] Is Cormorant Garamond used selectively as a display voice?
 - [ ] Is all metadata accurate?
 - [ ] Is the composer's name treated as an authorship credit rather than a logo?
 

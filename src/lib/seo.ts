@@ -3,6 +3,7 @@ import { profiles } from '#data/profiles';
 import { locales, type Language } from '#locales';
 import { externalLink, media } from './media';
 import { workList, workPath, type Work } from './catalog';
+import { faqItems } from './faq';
 
 export const absolute = (path: string) => new URL(path, site.url).href;
 const personId = absolute('/#aidan-wyber');
@@ -123,10 +124,31 @@ export function metadata(lang: Language, work?: Work) {
 			'mainEntity': { '@id': work ? workId(work.slug) : personId },
 			...(work ?
 				{}
-			:	{ about: works.map(item => ({ '@id': workId(item.slug) })) }),
+			:	{
+					about: works.map(item => ({ '@id': workId(item.slug) })),
+					hasPart: { '@id': `${canonical}#faq` },
+				}),
 		},
 		...works.map(item => workEntity(item, lang)),
 	];
+	// The shared footer is visible on all routes; describe its FAQ once per language,
+	// on the homepage. Text comes from the same source as the prerendered answers.
+	if (!work)
+		graph.push({
+			'@type': 'FAQPage',
+			'@id': `${canonical}#faq`,
+			'url': `${canonical}#faq`,
+			'name': copy.faq.title,
+			'inLanguage': lang,
+			'isPartOf': { '@id': `${canonical}#page` },
+			'about': { '@id': personId },
+			'mainEntity': faqItems(lang).map(item => ({
+				'@type': 'Question',
+				'@id': `${canonical}#faq-${item.id}`,
+				'name': item.question,
+				'acceptedAnswer': { '@type': 'Answer', text: item.answer },
+			})),
+		});
 	if (works.some(item => item.slug === 'generative-variations'))
 		graph.push({
 			'@type': 'CreativeWork',
@@ -146,7 +168,7 @@ export function metadata(lang: Language, work?: Work) {
 			:	absolute(site.sharingImage),
 		imageAlt:
 			work ?
-				`${work.kind === 'album' ? copy.releases.artwork : copy.media.still}: ${work.title}`
+				`${work.score ? copy.scores.preview : work.kind === 'album' ? copy.releases.artwork : copy.media.still}: ${work.title}`
 			:	`${site.personName} — ${copy.hero.headline.join(' ')}`,
 		alternates: (['nl', 'en'] as const).map(language => ({
 			lang: language,

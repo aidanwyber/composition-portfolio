@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600">
+<title>generative_variations.py — experimental recurrence study</title>
+<desc>Twenty equal segments recur at a fixed interval; each endpoint shifts four units. A proposal about rule and variation, not a plot of the algorithm or audio. No randomness. Not approved artwork.</desc>
+<path fill="#eeece4" d="M0 0h600v600H0z"/>
+<g transform="translate(0.0 0.0) scale(1.0)" fill="none" stroke="#252622" stroke-width="1.25"><path d="M 180 145 L 350 169"/><path d="M 180 160 L 354 184"/><path d="M 180 175 L 358 199"/><path d="M 180 190 L 362 214"/><path d="M 180 205 L 366 229"/><path d="M 180 220 L 370 244"/><path d="M 180 235 L 374 259"/><path d="M 180 250 L 378 274"/><path d="M 180 265 L 382 289"/><path d="M 180 280 L 386 304"/><path d="M 180 295 L 390 319"/><path d="M 180 310 L 394 334"/><path d="M 180 325 L 398 349"/><path d="M 180 340 L 402 364"/><path d="M 180 355 L 406 379"/><path d="M 180 370 L 410 394"/><path d="M 180 385 L 414 409"/><path d="M 180 400 L 418 424"/><path d="M 180 415 L 422 439"/><path d="M 180 430 L 426 454"/></g></svg>

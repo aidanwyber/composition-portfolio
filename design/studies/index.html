@@ -1,0 +1,31 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Design studies — Aidan Wyber</title><style>
+@font-face{font-family:Space;src:url('../../public/fonts/space-grotesk-latin.woff2')}
+@font-face{font-family:Cormorant;src:url('../../public/fonts/cormorant-garamond-medium.woff2');font-weight:500}
+@font-face{font-family:Alien;src:url('../../public/fonts/alien-block-latin.woff2')}
+*{box-sizing:border-box}body{margin:0;padding:clamp(20px,4vw,64px);background:#eeece4;color:#252622;font:16px/1.6 Space,Arial,sans-serif}
+h1{font:500 48px/1.1 Cormorant,Georgia,serif}h2{font-weight:500}p{max-width:80ch}section{margin-top:64px;border-top:1px solid #aaa99f;padding-top:24px}
+.comparison{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px;align-items:start}figure{margin:0}img{width:100%;height:auto}figcaption{font-size:14px}.thumbnail{width:96px;margin-top:24px}
+.specimen{font-size:clamp(28px,4vw,48px);line-height:1.2;overflow-wrap:anywhere}.instrument{font-family:Cormorant,Georgia,serif;font-weight:500}.alien{font-family:Alien,Arial,sans-serif}
+@media(max-width:700px){.comparison{grid-template-columns:1fr}}
+</style><main><h1>Design studies</h1><p>7 November 2026. Review material outside the public site. The website uses the guide's recommended Cormorant Garamond and paper/carbon as its current implementation. Existing covers and original score pages remain the public imagery. These three line systems are experiments; none is a selected identity or replacement cover.</p>
+<section><h2>Display comparison</h2><p>Cormorant Garamond Medium (current implementation)</p>
+<p class="specimen instrument">generative_variations.py<br>Études voor cello<br>De Toekomst In</p>
+<p>Alien Block (previous treatment)</p><p class="specimen alien">generative_variations.py<br>Études voor cello<br>De Toekomst In</p>
+<p>Primary text remains Space Grotesk. Carbon on paper is used for all small text; ash is reserved for structural rules. No extra accent is assigned to a genre or composition.</p></section>
+<section><h2>generative_variations.py</h2>
+<p>Twenty equal segments recur at a fixed interval; each endpoint shifts four units. A proposal about rule and variation, not a plot of the algorithm or audio.</p><p>count=20, step=15, shift=4; no randomness or seed.</p>
+<div class="comparison"><figure><img src="../../public/assets/albums/generative-variations.jpg" alt="Original release cover"><figcaption>Existing published artwork — retained</figcaption></figure>
+<figure><img src="recurrence-square.svg" alt="Experimental square line study"><figcaption>Experimental square · 600 × 600</figcaption></figure>
+<figure><img src="recurrence-landscape.svg" alt="Experimental landscape line study"><figcaption>Experimental landscape · 960 × 540</figcaption></figure></div>
+<img class="thumbnail" src="recurrence-square.svg" alt="Same experimental study at thumbnail size"></section><section><h2>Substructures</h2>
+<p>Two groups of sixteen vertical segments approach one another. The gap narrows by six units per pair, leaving the outer field empty. A proposal about underlying relationships.</p><p>count=16, step=12, shift=6; no randomness or seed.</p>
+<div class="comparison"><figure><img src="../../public/assets/albums/substructures.jpg" alt="Original release cover"><figcaption>Existing published artwork — retained</figcaption></figure>
+<figure><img src="proximity-square.svg" alt="Experimental square line study"><figcaption>Experimental square · 600 × 600</figcaption></figure>
+<figure><img src="proximity-landscape.svg" alt="Experimental landscape line study"><figcaption>Experimental landscape · 960 × 540</figcaption></figure></div>
+<img class="thumbnail" src="proximity-square.svg" alt="Same experimental study at thumbnail size"></section><section><h2>As The Sun Rises</h2>
+<p>Eighteen open angles share a turning point; each arm grows by ten units and shifts five units. A proposal about development and open space, not cosmological illustration.</p><p>count=18, step=10, shift=5; no randomness or seed.</p>
+<div class="comparison"><figure><img src="../../public/assets/albums/as-the-sun-rises.jpg" alt="Original release cover"><figcaption>Existing published artwork — retained</figcaption></figure>
+<figure><img src="expansion-square.svg" alt="Experimental square line study"><figcaption>Experimental square · 600 × 600</figcaption></figure>
+<figure><img src="expansion-landscape.svg" alt="Experimental landscape line study"><figcaption>Experimental landscape · 960 × 540</figcaption></figure></div>
+<img class="thumbnail" src="expansion-square.svg" alt="Same experimental study at thumbnail size"></section></main></html>

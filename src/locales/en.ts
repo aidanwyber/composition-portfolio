@@ -1,6 +1,8 @@
+import type { FAQItem } from '#lib/faq';
+
 export const en = {
 	seo: {
-		title: 'Aidan Wyber — Composer for Film & Moving Images',
+		title: 'Aidan Wyber — Compositions, Recordings & Scores',
 		description:
 			'Aidan Wyber is an independent composer and music producer in the Netherlands, creating original music for film, animation and moving images.',
 	},
@@ -30,9 +32,8 @@ export const en = {
 		compositionBy: 'Composition by',
 	},
 	hero: {
-		profession: 'Independent composer & music producer',
-		headline: ['Original music', 'for moving images.'],
-		supporting: ['Instrumental. Electronic.', 'Made for the picture.'],
+		headline: ['Instrumental, electronic', 'and generative music.'],
+		supporting: ['Independent compositions,', 'recordings and scores.'],
 		availability:
 			'Available for commissions in film, animation and visual storytelling.',
 		explore: 'Explore the work',
@@ -65,7 +66,30 @@ export const en = {
 		still: 'Project still',
 		videoLabel: 'Video',
 	},
+	scores: {
+		title: 'Scores',
+		preview: 'First page of the score',
+		pages: 'pages',
+		newTab: 'Opens in a new tab',
+	},
 	projects: {
+		'etudes-voor-cello': {
+			title: 'Études voor cello',
+			description:
+				'A collection of cello studies. The complete ten-page score is available as a PDF.',
+			category: 'Score',
+			instrumentation: 'Cello',
+			role: 'Composer',
+		},
+		'de-toekomst-in': {
+			title: 'De Toekomst In',
+			description:
+				'A composition for two cellos. The complete two-page score is available as a PDF.',
+			category: 'Score',
+			instrumentation: 'Two cellos',
+			role: 'Composer',
+		},
+
 		'01': {
 			title: 'Instrumental study',
 			description:
@@ -106,30 +130,30 @@ export const en = {
 			imageAlt?: string;
 		}
 	>,
+	catalogue: { independent: 'Independent work', commissioned: 'Commissioned work', layout: 'View', list: 'List', grid: 'Grid' },
 	releases: {
-		title: 'Independent releases',
-		metadata: 'Albums / Aidan Wyber',
+		title: 'Albums',
 		tracks: 'Tracklist',
-		details: 'About the composition',
+		details: 'More about this composition',
 		listen: 'Listen on',
 		artwork: 'Album artwork',
 		artworkMissing: 'Artwork forthcoming',
 	},
 	albums: {
 		'as-the-sun-rises': {
-			genres: 'Ambient / Experimental electronic',
+			genres: 'Ambient / Experimental',
 			description:
 				'A musical exploration of the origins, development and eventual decay of the universe. From the earliest cosmic structures to the emergence and extraordinary diversity of life on Earth. Slowly evolving textures, drones, repetition and sudden harmonic contrasts create a world in constant motion.',
 			details: [] as string[],
 		},
 		'substructures': {
-			genres: 'Ambient / Experimental',
+			genres: 'Ambient',
 			description:
 				'Music as an underlying structure of experience. Substructures emerged from a period of paying attention to attention itself: how different forms of awareness, perception and emotion alternate and sometimes fragment. The music is intended to colour and frame an experience without necessarily becoming its focal point.',
 			details: [] as string[],
 		},
 		'generative-variations': {
-			genres: 'Generative / Classical / Experimental',
+			genres: 'Generative classical',
 			description:
 				'An experimental composition project in which a Python algorithm generates and develops musical structures. Starting from a small, randomly generated musical seed, notes, harmonies, rhythms and instrumental lines are extrapolated through a system of rules into complete compositions. An exploration of the relationship between musical systems, chance and authorship.',
 			details: [
@@ -148,12 +172,53 @@ export const en = {
 	},
 	contact: {
 		title: 'Contact',
-		headline: ["Let's make", 'something move.'],
+		headline: ['What story needs', 'music?'],
 		supporting:
-			'Available for film scores, original music and collaborations.',
+			'Tell me about your project. An early idea or a rough cut is enough.',
+		action: 'Discuss your project',
 		socials: 'Social profiles',
 	},
-	footer: { country: 'Netherlands', top: 'Back to top' },
+	faq: {
+		title: 'Questions & answers',
+		items: [
+			{
+				id: 'practice',
+				question: 'Who is Aidan Wyber?',
+				answer: 'Aidan Wyber is an independent composer and music producer based in The Hague, Netherlands. His practice combines instrumental composition, electronic production and sound design, alongside experimental work with generative musical systems.',
+				target: 'about',
+				link: 'About Aidan',
+			},
+			{
+				id: 'commissions',
+				question: 'Can I commission music for a film or animation?',
+				answer: 'Aidan Wyber is available to compose original music for film, animation and other visual projects. Get in touch to discuss your idea, the atmosphere you are looking for and your timeline. An early idea or a rough cut is enough to start a conversation.',
+				target: 'contact',
+				link: 'Discuss your project',
+			},
+			{
+				id: 'listening',
+				question: 'Where can I listen to the music?',
+				answer: 'The album section includes As The Sun Rises, Substructures and generative_variations.py. Each release has links to its available streaming services. You can also choose to open the Spotify player on this website.',
+				target: 'releases',
+				link: 'Explore the albums',
+			},
+			{
+				id: 'scores',
+				question: 'Which scores are available?',
+				answer: 'The score section includes Études voor cello and De Toekomst In. Each entry lists the instrumentation and page count. The View score button opens the original PDF in a new tab.',
+				target: 'scores',
+				link: 'View the scores',
+			},
+			{
+				id: 'generative',
+				question: 'What does generative music mean in this work?',
+				answer: 'Generative music uses rules or algorithms to develop musical structures. In generative_variations.py, a Python algorithm develops a small musical seed into compositions through rules for notes, harmony, rhythm and instrumental lines. The project explores the relationship between musical systems, chance and authorship.',
+				target: 'generative',
+				link: 'About generative_variations.py',
+			},
+		] as FAQItem[],
+	},
+	footer: { top: 'Back to top' },
 };
 
 export type Copy = typeof en;

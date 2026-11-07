@@ -8,14 +8,34 @@ export interface Project {
 	video?: string;
 	videoPoster?: string;
 	score?: string;
+	scoreVersion?: string;
+	scorePages?: number;
 	externalUrl?: string;
 	sample?: boolean;
 }
 
-// Editable samples, not released works or claimed credits. Add/remove/reorder freely.
+// Published score works first; editable samples below are withheld from the catalogue.
 // Copy is keyed by id in src/locales/{nl,en}.ts. Years are omitted until known.
 // Local file paths are relative to public/assets/.
 export const projects: Project[] = [
+	{
+		id: 'etudes-voor-cello',
+		slug: 'etudes-voor-cello',
+		kind: 'independent',
+		image: 'scores/Études voor cello v2.webp',
+		score: 'scores/Études voor cello v2.pdf',
+		scoreVersion: 'v2',
+		scorePages: 10,
+	},
+	{
+		id: 'de-toekomst-in',
+		slug: 'de-toekomst-in',
+		kind: 'independent',
+		image: 'scores/De Toekomst In v1.webp',
+		score: 'scores/De Toekomst In v1.pdf',
+		scoreVersion: 'v1',
+		scorePages: 2,
+	},
 	{
 		id: '01',
 		kind: 'independent',

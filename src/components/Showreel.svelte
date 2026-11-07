@@ -1,7 +1,6 @@
 <script lang="ts">
 	import type { Copy } from '#locales';
 	import Video from '#components/Video';
-	import SoundDrawing from '#components/SoundDrawing';
 	let { copy }: { copy: Copy } = $props();
 </script>
 
@@ -19,7 +18,7 @@
 		>
 			{#snippet fallback()}<div class="reel-placeholder">
 					<span class="reel-corner">{copy.reel.corner}</span
-					><SoundDrawing />
+					>
 					<p class="reel-status">{copy.reel.forthcoming}</p>
 					<span class="reel-corner reel-corner-bottom"
 						>{copy.reel.tagline}</span

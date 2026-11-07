@@ -6,12 +6,16 @@
 		className = '',
 		eager = false,
 		square = false,
+		width = 640,
+		height = 400,
 	}: {
 		file?: string;
 		alt: string;
 		className?: string;
 		eager?: boolean;
 		square?: boolean;
+		width?: number;
+		height?: number;
 	} = $props();
 	let failed = $state(false);
 	const source = $derived(media(file));
@@ -30,8 +34,8 @@
 			class={className}
 			src={source}
 			{alt}
-			width={square ? 800 : 640}
-			height={square ? 800 : 400}
+			width={square ? 800 : width}
+			height={square ? 800 : height}
 			loading={eager ? 'eager' : 'lazy'}
 			decoding="async"
 			onerror={() => (failed = true)}

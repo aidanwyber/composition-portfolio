@@ -2,7 +2,25 @@
 
 **Date:** 7 November 2026  
 **Basis:** [Design brief](WEBSITE_DESIGN_BRIEF.md) and [read-only audit](WEBSITE_DESIGN_AUDIT.md).  
-**Status:** Recommendations only. No redesign or implementation is authorised by these documents.
+**Status:** Implementation requested by the owner on 7 November 2026. The original recommendations below are retained as the audit record.
+
+## Implementation update — 7 November 2026
+
+Owner revision: Cormorant Garamond replaces the previous display font throughout the site, font assets and exports. The header is now only “Aidan Wyber”. The catalogue hierarchy is “Eigen werk” → “Albums” / “Partituren”, with a shared list/grid switch. “Werk in opdracht” appears above it only for published commissioned projects. Contact is the single shared footer, with extra space and a right-aligned back-to-top link. Scores open online in a new tab; there is no download action. The opening no longer has a featured-release label.
+
+Follow-up refinements: display weight is Medium (500), the default catalogue view is grid, and the list/grid switch is temporarily hidden with `display: none`. Opening links are “Werk in opdracht” / “Eigen werk” if commissioned projects exist, otherwise “Albums” / “Partituren”. Hover states use eased transitions with reduced-motion handling.
+
+The featured-release block has now been removed entirely from the opening, including its cover, title, year, listening controls, data selection and dedicated styles.
+
+- **P1-01 implemented:** the opening links directly to the real catalogue sections. Work navigation reaches published work, with listening links on the release entries. Editable samples and the unavailable showreel are withheld from the public homepage.
+- **P1-02 implemented:** the owner confirmed `aidanwyber@gmail.com`; both bilingual contact actions use that address.
+- **P1-03/P1-04 implemented for review:** Cormorant Garamond Medium and the guide’s paper/carbon values are the current website treatment, including work titles, contact, media surfaces, font preload, social preview and generated 404. Space Grotesk remains the reading face. Local font sources and licences are retained. This application does not turn the guide’s provisional recommendations into permanent identity rules. A comparison with Alien Block is in `design/studies/index.html`.
+- **P1-05 public motif retired; exploration remains open:** the public video fallback, homepage and social preview no longer use the generic waveform. Actual release covers and score pages remain the public imagery. Three reproducible line studies, with their rules and parameters, live outside the public site in `design/studies/`; none is an approved replacement cover or universal identity. Generate them with `python scripts/generate-design-studies.py`.
+- **Supplied scores integrated:** `Études voor cello` (v2, ten pages) and `De Toekomst In` (v1, two pages) have bilingual catalogue entries and detail pages, uncropped first-page previews, authorship, instrumentation verified from the PDFs, and links that open the original files in a new tab. No dates, durations, recordings, or usage licences are inferred. Regenerate previews with `python scripts/generate-score-previews.py`.
+
+Validation: `npm run check` reports zero errors/warnings; `npm run build` verifies 12 prerendered routes, metadata, assets and JSON-LD. Chrome checks covered eight representative bilingual pages at 320, 390, 600, 768, 1024 and 1440px, plus 200% text at 768px. No horizontal overflow or browser script errors were found. Original PDF responses, image loading, contact links, deferred players, keyboard skip navigation and contextual language switching were checked. Actual third-party audio playback and full accessibility conformance are not established by these checks.
+
+The work is local to this repository; deployment is outside this implementation.
 
 Effort estimates are relative implementation estimates for the present SvelteKit site, not delivery promises. They exclude writing missing programme notes, producing recordings, replacing published artwork or resolving third-party playback restrictions. “Approval” below identifies a decision to settle before a later implementation; it is not a request to start work now.
 
@@ -28,8 +46,8 @@ Effort estimates are relative implementation estimates for the present SvelteKit
 
 ### P1-03. Agree and implement a quieter display hierarchy
 
-- **What:** Compare Instrument Serif Regular with the existing Alien Block treatment using real work titles, a restrained introductory statement and both languages. Agree the display role, scale and line breaks; then apply the approved treatment. Give actual work titles appropriate prominence and keep Space Grotesk as the functional reading face.
-- **Why:** The current strongest display voice belongs to promotional headlines. The guide asks for a quieter contrast that serves the compositions. Instrument Serif is recommended, not already a final decision that can be installed without review.
+- **What:** Compare Cormorant Garamond Medium with the existing Alien Block treatment using real work titles, a restrained introductory statement and both languages. Agree the display role, scale and line breaks; then apply the approved treatment. Give actual work titles appropriate prominence and keep Space Grotesk as the functional reading face.
+- **Why:** The current strongest display voice belongs to promotional headlines. The guide asks for a quieter contrast that serves the compositions. Cormorant Garamond is recommended, not already a final decision that can be installed without review.
 - **Affected:** `src/style.css` display/title selectors, homepage and work-detail templates, font assets/preloads. Audit A02, A07, A10.
 - **Effort:** **Medium**.
 - **Dependencies:** Review/approval of the display specimen and P1-01's opening hierarchy. The previous explicit Alien Block choice remains the current implementation until a replacement is agreed. Do not add IBM Plex Mono by default.
@@ -160,7 +178,7 @@ These are the essential content/art-direction foundations. The immediate practic
 
 | Decision               | Established boundary                                                    | Still open                                                                                                                               |
 | ---------------------- | ----------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
-| Display type           | Space Grotesk is primary; a contrasting free display voice is wanted.   | Instrument Serif is recommended, but replacing the previously chosen Alien Block and its exact hierarchy requires review.                |
+| Display type           | Space Grotesk is primary; a contrasting free display voice is wanted.   | Cormorant Garamond is recommended, but replacing the previously chosen Alien Block and its exact hierarchy requires review.                |
 | Colour                 | The interface should be restrained and mostly monochrome.               | Final paper/carbon values, inverse surfaces, the contact treatment and any work-specific accent.                                         |
 | Opening hierarchy      | The music should lead and contact must remain usable.                   | Which genuine work leads; how prominent the commissioning statement remains; where a real future showreel belongs.                       |
 | Artwork family         | Lines, abstraction, internal logic and distinct work identities.        | Geometry, density, algorithm families, seeds/parameters, music-to-image mapping and whether new imagery supplements particular releases. |

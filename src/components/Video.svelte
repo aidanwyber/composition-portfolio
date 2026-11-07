@@ -1,7 +1,6 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
 	import { media, pauseOtherMedia } from '#lib/media';
-	import SoundDrawing from '#components/SoundDrawing';
 	let {
 		file,
 		poster,
@@ -16,18 +15,11 @@
 		fallback: Snippet;
 	} = $props();
 	let failed = $state(false);
-	let started = $state(false);
 	const source = $derived(media(file));
 </script>
 
 {#if source && !failed}
 	<div class="video-frame">
-		{#if !media(poster) && !started}<div
-				class="video-backdrop"
-				aria-hidden="true"
-			>
-				<SoundDrawing />
-			</div>{/if}
 		<!-- Instrumental portfolio video; add caption tracks if spoken content is supplied. -->
 		<!-- svelte-ignore a11y_media_has_caption -->
 		<video
@@ -39,7 +31,6 @@
 			aria-label={label}
 			onerror={() => (failed = true)}
 			onplay={event => {
-				started = true;
 				pauseOtherMedia(event.currentTarget);
 			}}
 		>

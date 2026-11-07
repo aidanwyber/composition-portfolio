@@ -2,6 +2,7 @@
 	import type { Snippet } from 'svelte';
 	import type { Copy, Language } from '#locales';
 	import { workPath } from '#lib/catalog';
+	import ContactFooter from '#components/ContactFooter';
 	let {
 		lang,
 		copy,
@@ -20,12 +21,13 @@
 </script>
 
 <a class="skip-link" href="#main">{copy.navigation.skip}</a>
+<div class="page-surface">
 <header class="header container" id="top">
 	<a
 		class="wordmark"
 		href={slug ? home : '#top'}
 		aria-label={copy.navigation.home}
-		>Aidan Wyber<span class="descriptor">{copy.descriptor}</span></a
+		>Aidan Wyber</a
 	>
 	<div class="header-navigation">
 		<nav aria-label={copy.navigation.label}>
@@ -63,8 +65,5 @@
 	</div>
 </header>
 {@render children()}
-<footer class="footer container">
-	<span>© {new Date().getFullYear()} Aidan Wyber</span><span
-		>{copy.footer.country}</span
-	><a href="#top">{copy.footer.top} ↑</a>
-</footer>
+</div>
+<ContactFooter {copy} {lang} />

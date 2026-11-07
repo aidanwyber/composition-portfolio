@@ -6,7 +6,7 @@ export const site = {
 	jobTitle: 'Composer and Music Producer',
 	description:
 		'Aidan Wyber is an independent composer and music producer based in the Netherlands, creating original music for film, animation and moving images. His work combines instrumental composition, electronic music, sound design and generative musical systems.',
-	portrait: '', // e.g. 'portrait.jpg', only included when the file exists
+	portrait: 'portrait.jpg',
 	sharingImage: '/assets/social/portfolio.png',
 	verification: { google: '', bing: '' },
 	// Nothing loads until explicitly enabled. Analytics must be a privacy-friendly,
@@ -17,5 +17,5 @@ export const site = {
 		consentRequired: true,
 		enabled: false,
 	},
-	email: 'your-email@example.com',
+	email: 'aidanwyber@gmail.com',
 };

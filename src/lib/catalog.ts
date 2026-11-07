@@ -12,6 +12,7 @@ export function workList(lang: Language) {
 		...albums.map(album => ({
 			slug: album.id,
 			kind: 'album' as const,
+			practice: 'independent' as const,
 			title: album.title,
 			year: album.year,
 			image: album.artwork,
@@ -20,6 +21,8 @@ export function workList(lang: Language) {
 			video: album.video,
 			UPC: album.UPC,
 			score: undefined as string | undefined,
+			scoreVersion: undefined as string | undefined,
+			scorePages: undefined as number | undefined,
 			...copy.albums[album.id],
 			links: platformOrder.flatMap(key => {
 				const url = externalLink(albumLinks[album.id][key]);
@@ -33,6 +36,7 @@ export function workList(lang: Language) {
 			.map(project => ({
 				slug: project.slug!,
 				kind: 'composition' as const,
+				practice: project.kind,
 				title: copy.projects[project.id].title,
 				year: project.year,
 				image: project.image,
@@ -41,6 +45,8 @@ export function workList(lang: Language) {
 				video: project.video,
 				UPC: undefined,
 				score: project.score,
+				scoreVersion: project.scoreVersion,
+				scorePages: project.scorePages,
 				genres:
 					copy.projects[project.id].instrumentation ||
 					copy.projects[project.id].category,
