@@ -1,0 +1,9 @@
+Spotify, Apple Music, YouTube Music and Deezer SVG marks downloaded from:
+https://github.com/simple-icons/simple-icons/tree/develop/icons
+Retrieved 2026-11-07. Original SVG geometry is preserved.
+
+Files: spotify.svg, applemusic.svg, youtubemusic.svg, deezer.svg.
+Simple Icons project license: CC0-1.0 (see LICENSE.txt).
+Source metadata and individual brand guidelines:
+https://github.com/simple-icons/simple-icons
+https://github.com/simple-icons/simple-icons/blob/develop/DISCLAIMER.md
