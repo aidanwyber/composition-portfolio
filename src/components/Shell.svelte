@@ -29,6 +29,7 @@
 		aria-label={copy.navigation.home}
 		>Aidan Wyber</a
 	>
+</header>
 	<div class="header-navigation">
 		<nav aria-label={copy.navigation.label}>
 			<a href={`${slug ? home : ''}#work`}>{copy.navigation.work}</a><a
@@ -63,7 +64,6 @@
 			{/each}
 		</div>
 	</div>
-</header>
 {@render children()}
 </div>
 <ContactFooter {copy} {lang} />

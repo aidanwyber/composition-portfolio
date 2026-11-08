@@ -697,18 +697,21 @@ audio {
 
 @media (max-width: 600px) {
 	html {
-		scroll-padding-top: 136px;
+		scroll-padding-top: 72px;
 	}
 	.header {
 		gap: 18px;
-		padding-block: 22px 82px;
+		padding-block: 22px 8px;
 		flex-wrap: wrap;
 	}
 	.header-navigation {
-		width: auto;
+		position: sticky;
+		top: 0;
+		width: 100%;
+		margin-left: 0;
 		justify-content: space-between;
 		gap: 12px;
-		padding-top: calc(66px + env(safe-area-inset-top, 0px));
+		padding-top: calc(8px + env(safe-area-inset-top, 0px));
 	}
 	.wordmark {
 		font-size: 18px;
