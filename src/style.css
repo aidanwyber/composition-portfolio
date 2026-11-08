@@ -160,6 +160,8 @@ p {
 	padding-block: 28px;
 }
 .wordmark {
+	position: relative;
+	z-index: 21;
 	font-size: 20px;
 	font-weight: 500;
 	letter-spacing: -0.025em;
@@ -167,18 +169,25 @@ p {
 }
 .header-navigation {
 	position: fixed;
-	top: calc(12px + env(safe-area-inset-top, 0px));
-	right: var(--page-gutter);
+	top: 0;
+	left: 0;
+	right: 0;
 	z-index: 20;
 	display: flex;
 	align-items: center;
+	justify-content: flex-end;
 	flex-wrap: wrap;
 	gap: 32px;
 	margin-left: auto;
-	max-width: calc(100% - var(--page-gutter) - var(--page-gutter));
-	padding: 8px 16px;
+	max-width: none;
+	padding: calc(20px + env(safe-area-inset-top, 0px)) var(--page-gutter) 8px;
 	color: var(--carbon);
-	background: var(--paper);
+	background: transparent;
+	pointer-events: none;
+}
+.header-navigation nav,
+.header-navigation .language-switcher {
+	pointer-events: auto;
 }
 .header-navigation nav {
 	flex-wrap: wrap;
@@ -693,12 +702,10 @@ audio {
 		flex-wrap: wrap;
 	}
 	.header-navigation {
-		top: calc(58px + env(safe-area-inset-top, 0px));
-		left: var(--page-gutter);
 		width: auto;
 		justify-content: space-between;
 		gap: 12px;
-		padding-inline: 0;
+		padding-top: calc(66px + env(safe-area-inset-top, 0px));
 	}
 	.wordmark {
 		font-size: 18px;
@@ -809,6 +816,10 @@ audio {
 	.contact-footer.footer-reveal {
 		position: static;
 	}
+	.header-navigation {
+		padding: 0;
+		background: none;
+	}
 }
 
 .work-detail {
@@ -893,6 +904,21 @@ audio {
 }
 .detail-audio {
 	margin-top: 24px;
+}
+.score-demo {
+	margin: 24px 0 0;
+	padding-top: 16px;
+	border-top: 1px solid var(--rule);
+	max-width: 420px;
+}
+.score-demo figcaption {
+	margin-bottom: 8px;
+	font-size: 13px;
+	font-weight: 500;
+}
+.score-demo audio {
+	width: 100%;
+	color-scheme: light;
 }
 @media (max-width: 700px) {
 	.detail-layout {
@@ -990,13 +1016,21 @@ audio {
 	border-top: 1px solid var(--rule);
 }
 .work-artwork { display: block; width: 100%; aspect-ratio: 1; }
+.work-artwork-score {
+	aspect-ratio: 1;
+	overflow: hidden;
+}
 .work-artwork-score picture {
-	display: flex;
-	align-items: center;
-	justify-content: center;
+	display: block;
 	height: 100%;
 }
-.work-artwork-score .score-page { width: auto; max-width: 100%; max-height: 100%; }
+.work-artwork-score .score-page {
+	width: 100%;
+	height: 100%;
+	aspect-ratio: 1;
+	object-fit: cover;
+	object-position: center top;
+}
 .work-info { min-width: 0; }
 .work-heading { display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px 20px; }
 .work-heading :is(h3,h4) {

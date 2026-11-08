@@ -6,6 +6,7 @@
 	import ListeningLinks from '#components/ListeningLinks';
 	import SpotifyPlayer from '#components/SpotifyPlayer';
 	import Audio from '#components/Audio';
+	import ScoreDemo from '#components/ScoreDemo';
 	import Video from '#components/Video';
 	import WorkMetadata from '#components/WorkMetadata';
 	let {
@@ -99,7 +100,9 @@
 					title={work.title}
 					{copy}
 				/>
-				{#if work.audio}<div class="detail-audio">
+				{#if work.audio && work.score}
+					<ScoreDemo file={work.audio} title={work.title} {copy} />
+				{:else if work.audio}<div class="detail-audio">
 						<Audio
 							file={work.audio}
 							label={`${copy.media.listen} ${work.title}`}

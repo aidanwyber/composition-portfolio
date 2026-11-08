@@ -59,6 +59,7 @@ export const nl: Copy = {
 		project: 'Bekijk project',
 	},
 	media: {
+		audioUnavailable: 'De audio kon niet worden geladen. Probeer het later opnieuw.',
 		recording: 'Opname volgt',
 		video: 'Video volgt',
 		unsupported: 'Je browser ondersteunt het afspelen van video niet.',
@@ -67,6 +68,7 @@ export const nl: Copy = {
 		videoLabel: 'Video',
 	},
 	scores: {
+		demo: 'Luister naar de demo',
 		title: 'Partituren',
 		preview: 'Eerste pagina van de partituur',
 		pages: 'pagina’s',
@@ -76,15 +78,15 @@ export const nl: Copy = {
 		'etudes-voor-cello': {
 			title: 'Études voor cello',
 			description:
-				'Een verzameling cellostudies. De volledige partituur van tien pagina’s is beschikbaar als PDF.',
+				'Deze études ontstonden toen ik cello begon te leren spelen. Vanaf het begin schreef ik oefeningen voor mijn eigen studie, waarin spelen en componeren samenkomen. De verzameling verkent verschillende posities, articulaties, flageoletten, strijktechnieken en dynamiek.',
 			category: 'Partituur',
 			instrumentation: 'Cello',
 			role: 'Componist',
 		},
 		'de-toekomst-in': {
-			title: 'De Toekomst In',
+			title: 'De toekomst in',
 			description:
-				'Een compositie voor twee cello’s. De volledige partituur van twee pagina’s is beschikbaar als PDF.',
+				'Een compositie voor twee cello’s die het gevoel verklankt van vooruitgaan in de tijd.',
 			category: 'Partituur',
 			instrumentation: 'Twee cello’s',
 			role: 'Componist',
@@ -162,7 +164,7 @@ export const nl: Copy = {
 		title: 'Over mij',
 		heading: 'Ik ben Aidan. Ik schrijf muziek.',
 		biography:
-			'Ik ben zelfstandig componist en muziekproducent, gevestigd in Den Haag, Nederland. Vanuit instrumentale compositie, elektronische productie en sounddesign maak ik originele muziek die aansluit bij de sfeer, het ritme en de emotionele lading van bewegend beeld. Mijn eigen werk verkent ook experimentele compositie en generatieve muzikale systemen.',
+			'Ik ben zelfstandig componist en muziekproducent, gevestigd in Den Haag. Vanuit instrumentale compositie, elektronische productie en sounddesign maak ik originele muziek die aansluit bij de sfeer, het ritme en de emotionele lading van bewegend beeld. Mijn eigen werk verkent ook experimentele compositie en generatieve muzikale systemen.',
 		portrait: 'Aidan Wyber',
 	},
 	contact: {
@@ -193,14 +195,14 @@ export const nl: Copy = {
 			{
 				id: 'listening',
 				question: 'Waar kan ik de muziek beluisteren?',
-				answer: 'In het albumoverzicht staan As The Sun Rises, Substructures en generative_variations.py. Bij elke uitgave vind je links naar de beschikbare muziekdiensten. Je kunt er ook voor kiezen om de Spotify-speler op deze website te openen.',
+				answer: 'Je vindt de muziek van Aidan Wyber op de grote streamingplatforms, waaronder Spotify, Apple Music en YouTube Music. In het albumoverzicht staan directe links naar de beschikbare muziekdiensten en kun je de Spotify-speler openen.',
 				target: 'releases',
 				link: 'Ontdek de albums',
 			},
 			{
 				id: 'scores',
-				question: 'Welke partituren zijn beschikbaar?',
-				answer: 'In het partituuroverzicht staan Études voor cello en De Toekomst In. Bij elke partituur staan de bezetting en het aantal pagina’s. Met de knop Bekijk partituur open je de originele PDF in een nieuw tabblad.',
+				question: 'Kan ik partituren bekijken?',
+				answer: 'Ja. Je kunt op deze website een aantal partituren van Aidan Wyber gratis bekijken, waaronder Études voor cello en De toekomst in. Bij elke partituur vind je de bezetting en het aantal pagina’s. Met de knop Bekijk partituur open je de PDF in een nieuw tabblad.',
 				target: 'scores',
 				link: 'Bekijk de partituren',
 			},

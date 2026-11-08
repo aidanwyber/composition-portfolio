@@ -4,7 +4,8 @@
 		file,
 		label,
 		forthcoming,
-	}: { file?: string; label: string; forthcoming: string } = $props();
+		unavailable,
+	}: { file?: string; label: string; forthcoming: string; unavailable?: string } = $props();
 	let failed = $state(false);
 	const source = $derived(media(file));
 </script>
@@ -19,4 +20,4 @@
 	>
 		<source src={source} onerror={() => (failed = true)} />
 	</audio>
-{:else}<span class="media-status">{forthcoming}</span>{/if}
+{:else}<span class="media-status" role="status">{failed ? unavailable || forthcoming : forthcoming}</span>{/if}

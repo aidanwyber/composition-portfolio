@@ -59,6 +59,7 @@ export const en = {
 		project: 'View project',
 	},
 	media: {
+		audioUnavailable: 'Audio could not be loaded. Please try again later.',
 		recording: 'Recording forthcoming',
 		video: 'Video forthcoming',
 		unsupported: 'Your browser does not support video playback.',
@@ -67,6 +68,7 @@ export const en = {
 		videoLabel: 'Video',
 	},
 	scores: {
+		demo: 'Listen to demo',
 		title: 'Scores',
 		preview: 'First page of the score',
 		pages: 'pages',
@@ -76,15 +78,15 @@ export const en = {
 		'etudes-voor-cello': {
 			title: 'Études voor cello',
 			description:
-				'A collection of cello studies. The complete ten-page score is available as a PDF.',
+				'These études began when I started learning to play the cello. From the outset, I wrote exercises for my own practice, bringing playing and composing together. The collection explores different positions, articulations, harmonics, bowing techniques and dynamics.',
 			category: 'Score',
 			instrumentation: 'Cello',
 			role: 'Composer',
 		},
 		'de-toekomst-in': {
-			title: 'De Toekomst In',
+			title: 'Into the future',
 			description:
-				'A composition for two cellos. The complete two-page score is available as a PDF.',
+				'A composition for two cellos, expressing a sense of moving forward through time.',
 			category: 'Score',
 			instrumentation: 'Two cellos',
 			role: 'Composer',
@@ -198,14 +200,14 @@ export const en = {
 			{
 				id: 'listening',
 				question: 'Where can I listen to the music?',
-				answer: 'The album section includes As The Sun Rises, Substructures and generative_variations.py. Each release has links to its available streaming services. You can also choose to open the Spotify player on this website.',
+				answer: 'You can find Aidan Wyber’s music on major streaming platforms, including Spotify, Apple Music and YouTube Music. The album section provides direct links to the available services and an optional Spotify player.',
 				target: 'releases',
 				link: 'Explore the albums',
 			},
 			{
 				id: 'scores',
-				question: 'Which scores are available?',
-				answer: 'The score section includes Études voor cello and De Toekomst In. Each entry lists the instrumentation and page count. The View score button opens the original PDF in a new tab.',
+				question: 'Can I view scores?',
+				answer: 'Yes. A selection of Aidan Wyber’s scores is available to view for free on this website, including Études voor cello and Into the future. Each entry lists the instrumentation and page count. The View score button opens the PDF in a new tab.',
 				target: 'scores',
 				link: 'View the scores',
 			},

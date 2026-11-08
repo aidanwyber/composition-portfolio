@@ -3,6 +3,7 @@
 	import Seo from '#components/Seo';
 	import Image from '#components/Image';
 	import Audio from '#components/Audio';
+	import ScoreDemo from '#components/ScoreDemo';
 	import Video from '#components/Video';
 	import ListeningLinks from '#components/ListeningLinks';
 	import SpotifyPlayer from '#components/SpotifyPlayer';
@@ -54,7 +55,9 @@
 					title={work.title}
 					{copy}
 				/>
-				{#if work.audio}<div
+				{#if work.audio && work.score}
+					<ScoreDemo file={work.audio} title={work.title} {copy} />
+				{:else if work.audio}<div
 						class="detail-audio"
 					>
 						<Audio

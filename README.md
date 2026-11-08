@@ -16,7 +16,7 @@ Upload **`build/`**, not the old Vite `dist/`. All public content, metadata and 
 
 ## Metadata and configuration
 
-- `src/data/site.ts`: production origin (`https://music.aidanwyber.xyz`), identity, email, portrait path, sharing image, webmaster verification and optional analytics settings.
+- `src/data/site.ts`: production origin (`https://aidanwyber.xyz`), identity, email, portrait path, sharing image, webmaster verification and optional analytics settings.
 - `src/locales/nl.ts` and `en.ts`: route titles, descriptions, biography, album descriptions, project copy and accessibility labels.
 - `src/lib/seo.ts`: a single graph per page using stable Person, WebSite, MusicAlbum and CreativeWork IDs. Sample projects are excluded. Albums with only a release year use ISO 8601 year precision; no month or day is invented.
 - `src/data/profiles.ts`: verified Spotify, Apple Music, YouTube, Deezer, Instagram, LinkedIn, SoundCloud and Bandcamp profiles. Only configured HTTP(S) URLs appear in the footer/contact area and Person `sameAs`. These must identify Aidan, not a distributor or someone else's profile.
@@ -25,9 +25,11 @@ Blank profiles, portrait and verification codes are omitted. Add `portrait.jpg` 
 
 Published scores are configured in `src/data/projects.ts`, with bilingual copy in `src/locales/`. Keep the original PDFs in `public/assets/scores/`; generate uncropped first-page WebP previews with `python scripts/generate-score-previews.py` (requires PyMuPDF and Pillow). Preview geometry is A4 portrait, separate from square release covers. Sample projects remain editable in the data but are withheld from the public catalogue.
 
+Set a score project's `audio` path to its MP3 demo to show a native HTML player on the homepage and detail page. Players use localized labels, defer loading until interaction, and pause other local media when played. `ScoreDemo.svelte` provides the shared understated layout. The local preview server supports byte ranges for audio/video duration and seeking.
+
 Albums and scores use `WorkCollection.svelte`, with grid as the default. The list/grid switch is retained but hidden with CSS for now. Published projects with `kind: 'commissioned'` appear under “Werk in opdracht” / “Commissioned work” above the independent catalogue; the section is omitted when empty. The opening links point to commissions and independent work when commissions exist, otherwise to albums and scores. Score PDF links open in a new tab without download controls. `ContactFooter.svelte` is the single shared footer on home and detail pages. Display typography uses Cormorant Garamond Medium (500); hover transitions use 180ms ease and respect reduced motion.
 
-The current brand-guide application uses locally hosted Cormorant Garamond Medium and Space Grotesk with paper/carbon interface colours. Regenerate the release-based sharing graphic with `python scripts/generate-social.py` (Pillow). Review the alternative type specimen and experimental line studies in `design/studies/index.html`; regenerate with `python scripts/generate-design-studies.py`. These experiments are outside `public/` and are not release artwork.
+The current brand-guide application uses locally hosted Cormorant Garamond Medium and Space Grotesk with paper/carbon interface colours. Regenerate the score-based sharing graphic and matching favicons with `python scripts/generate-social.py` (Pillow). Review the alternative type specimen and experimental line studies in `design/studies/index.html`; regenerate with `python scripts/generate-design-studies.py`. These experiments are outside `public/` and are not release artwork.
 
 The top-right navigation stays fixed while scrolling. The opaque `page-surface` layer scrolls over a bottom-pinned footer to reveal it. `ContactFooter.svelte` observes its natural height: a footer taller than the viewport returns to normal flow, including when Q&A expands. Reduced-motion and no-JavaScript views use normal footer scrolling. A separate contact anchor stays in document flow, and footer focus reveals covered controls for keyboard users.
 
@@ -74,7 +76,7 @@ A static adapter cannot configure an arbitrary host's HTTP behaviour. Deploy `bu
 
 ## Search tools, analytics and validation
 
-Set the Google Search Console / Bing verification values in `site.verification` or use DNS verification. Once the music subdomain is deployed and verified, submit `https://music.aidanwyber.xyz/sitemap.xml` in each webmaster tool. `robots.txt` allows crawlers and advertises the sitemap. Sitemap entries exclude redirects, errors and sample work; no made-up modification dates are emitted.
+Set the Google Search Console / Bing verification values in `site.verification` or use DNS verification. Once the domain is deployed and verified, submit `https://aidanwyber.xyz/sitemap.xml` in each webmaster tool. `robots.txt` allows crawlers and advertises the sitemap. Sitemap entries exclude redirects, errors and sample work; no made-up modification dates are emitted.
 
 Analytics is disabled by default. A configured script loads only when `enabled: true` and `consentRequired: false`; use this only after choosing a privacy-friendly cookieless service and considering applicable consent requirements. If your provider requires consent, leave the gate enabled and integrate a consent mechanism before loading it. No tracking script or consent banner is added to the default page.
 

@@ -59,8 +59,8 @@
 								file={site.portrait}
 								alt={copy.about.portrait}
 								className="portrait-image"
-								width={1150}
-								height={1150}
+								width={3024}
+								height={3024}
 							/>
 						</div>
 					{/if}

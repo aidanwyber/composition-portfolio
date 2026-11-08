@@ -19,22 +19,22 @@ export interface Project {
 // Local file paths are relative to public/assets/.
 export const projects: Project[] = [
 	{
-		id: 'etudes-voor-cello',
-		slug: 'etudes-voor-cello',
-		kind: 'independent',
-		image: 'scores/Études voor cello v2.webp',
-		score: 'scores/Études voor cello v2.pdf',
-		scoreVersion: 'v2',
-		scorePages: 10,
-	},
-	{
 		id: 'de-toekomst-in',
 		slug: 'de-toekomst-in',
 		kind: 'independent',
-		image: 'scores/De Toekomst In v1.webp',
-		score: 'scores/De Toekomst In v1.pdf',
-		scoreVersion: 'v1',
+		image: 'scores/Two Cellos - De toekomst in.webp',
+		score: 'scores/Two Cellos - De toekomst in.pdf',
+		audio: 'scores/Two Cellos - De toekomst in.mp3',
 		scorePages: 2,
+	},
+	{
+		id: 'etudes-voor-cello',
+		slug: 'etudes-voor-cello',
+		kind: 'independent',
+		image: 'scores/Études voor cello.webp',
+		score: 'scores/Études voor cello.pdf',
+		audio: 'scores/Études voor cello.mp3',
+		scorePages: 13,
 	},
 	{
 		id: '01',
