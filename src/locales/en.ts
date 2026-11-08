@@ -68,6 +68,7 @@ export const en = {
 		videoLabel: 'Video',
 	},
 	scores: {
+		downloadDemo: 'Download demo',
 		demo: 'Listen to demo',
 		title: 'Scores',
 		preview: 'First page of the score',
@@ -175,8 +176,7 @@ export const en = {
 	contact: {
 		title: 'Contact',
 		headline: ['What story needs', 'music?'],
-		supporting:
-			'Tell me about your project. An early idea or a rough cut is enough.',
+		supporting: ['Tell me about your project.', 'An early idea or a rough cut is enough.'],
 		action: 'Discuss your project',
 		socials: 'Social profiles',
 	},

@@ -641,6 +641,9 @@ audio {
 .contact-heading > span {
 	display: block;
 }
+.contact-note > span {
+	display: block;
+}
 .contact-actions {
 	display: flex;
 	align-items: center;
@@ -674,7 +677,7 @@ audio {
 }
 .contact-note {
 	margin-top: 24px;
-	max-width: 44ch;
+	max-width: 60ch;
 	font-size: 18px;
 	line-height: 1.6;
 }
@@ -878,6 +881,14 @@ audio {
 }
 .score-button:focus-visible {
 	outline-color: var(--carbon);
+}
+.demo-download {
+	background: transparent;
+	color: var(--carbon);
+}
+.demo-download:hover {
+	background: var(--carbon);
+	color: var(--paper);
 }
 .score-page {
 	display: block;

@@ -48,6 +48,12 @@
 						title={work.title}
 						listenLabel={copy.releases.listen}
 					/>{#if score}<a class="score-button" href={score} target="_blank" rel="noopener noreferrer" aria-label={`${copy.work.score}: ${work.title} — ${copy.scores.newTab}`}>{copy.work.score} <span aria-hidden="true">↗</span></a>{/if}
+					{#if work.score && media(work.audio)}
+						<a class="score-button demo-download" href={media(work.audio)} download
+							aria-label={`${copy.scores.downloadDemo}: ${work.title}`}>
+							{copy.scores.downloadDemo} <span aria-hidden="true">↓</span>
+						</a>
+					{/if}
 				</div>
 				<SpotifyPlayer
 					url={work.links.find(link => link.platform === 'spotify')

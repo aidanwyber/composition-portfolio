@@ -12,7 +12,7 @@ npm run build
 npm run preview
 ```
 
-Upload **`build/`**, not the old Vite `dist/`. All public content, metadata and JSON-LD are present in HTML before JavaScript runs. `/` redirects to `/nl/`; indexable pages are `/nl/`, `/en/`, `/nl/werk/[slug]/` and `/en/work/[slug]/`.
+The static build output is **`docs/`**. GitHub Actions builds and deploys that directory; generated files are ignored by Git. All public content, metadata and JSON-LD are present in HTML before JavaScript runs. `/` redirects to `/nl/`; indexable pages are `/nl/`, `/en/`, `/nl/werk/[slug]/` and `/en/work/[slug]/`.
 
 ## Metadata and configuration
 
@@ -25,7 +25,7 @@ Blank profiles, portrait and verification codes are omitted. Add `portrait.jpg` 
 
 Published scores are configured in `src/data/projects.ts`, with bilingual copy in `src/locales/`. Keep the original PDFs in `public/assets/scores/`; generate uncropped first-page WebP previews with `python scripts/generate-score-previews.py` (requires PyMuPDF and Pillow). Preview geometry is A4 portrait, separate from square release covers. Sample projects remain editable in the data but are withheld from the public catalogue.
 
-Set a score project's `audio` path to its MP3 demo to show a native HTML player on the homepage and detail page. Players use localized labels, defer loading until interaction, and pause other local media when played. `ScoreDemo.svelte` provides the shared understated layout. The local preview server supports byte ranges for audio/video duration and seeking.
+Set a score project's `audio` path to its MP3 demo to show a native HTML player and a demo download button beside the score link on the homepage and detail page. Players use localized labels, defer loading until interaction, and pause other local media when played. `ScoreDemo.svelte` provides the shared understated layout. The local preview server supports byte ranges for audio/video duration and seeking.
 
 Albums and scores use `WorkCollection.svelte`, with grid as the default. The list/grid switch is retained but hidden with CSS for now. Published projects with `kind: 'commissioned'` appear under “Werk in opdracht” / “Commissioned work” above the independent catalogue; the section is omitted when empty. The opening links point to commissions and independent work when commissions exist, otherwise to albums and scores. Score PDF links open in a new tab without download controls. `ContactFooter.svelte` is the single shared footer on home and detail pages. Display typography uses Cormorant Garamond Medium (500); hover transitions use 180ms ease and respect reduced motion.
 
@@ -72,7 +72,7 @@ Add genuine showreel media as `public/assets/showreel.mp4` and `showreel-poster.
 
 `npm run preview` serves the real static output at port 5174: pages return 200, `/` and missing trailing slashes return 308, and unknown routes return 404 with `noindex`. Set `PORT` if needed. There is no SPA catch-all that turns unknown URLs into successful pages.
 
-A static adapter cannot configure an arbitrary host's HTTP behaviour. Deploy `build/_redirects` on a host supporting that format, or apply `deploy/nginx.conf` inside the production server block with its document root pointing to `build/`. Configure directory indexes and serve `404.html` with a 404 status. Preserve these rules when deploying on another host; a meta refresh alone is not an HTTP redirect. The project is prepared locally and has not been deployed.
+GitHub Pages serves `docs/index.html` as the root landing redirect to `/nl/` and `docs/404.html` for unknown URLs. The root redirect is client-side on Pages (HTTP 200), rather than the local preview server's HTTP 308; GitHub Pages does not read `_redirects` or Nginx configuration. On another host supporting `_redirects`, deploy `docs/_redirects`, or apply `deploy/nginx.conf` with its root pointing to `docs/`.
 
 ## Search tools, analytics and validation
 
@@ -81,3 +81,20 @@ Set the Google Search Console / Bing verification values in `site.verification` 
 Analytics is disabled by default. A configured script loads only when `enabled: true` and `consentRequired: false`; use this only after choosing a privacy-friendly cookieless service and considering applicable consent requirements. If your provider requires consent, leave the gate enabled and integrate a consent mechanism before loading it. No tracking script or consent banner is added to the default page.
 
 `npm run check` validates TypeScript/Svelte. Every production build runs `scripts/verify-build.mjs`, which checks prerendered content, unique route titles, canonical/hreflang URLs, sitemap entries, local assets, JSON-LD syntax, stable entity IDs and factual track counts. For independent vocabulary validation, paste rendered HTML into the [Schema.org validator](https://validator.schema.org/); use [Google's Rich Results Test](https://search.google.com/test/rich-results) for Google's supported types. Valid structured data does not guarantee a rich result, ranking or AI citation.
+
+
+## Deploy to GitHub Pages
+
+`.github/workflows/pages.yml` runs `npm ci`, `npm run check` and `npm run build` on Node.js 22. Pushes to `main` (or a manual Actions run) upload **`./docs`** and deploy it using GitHub Pages. Pull requests run checks/build without deploying. No personal access token or Python installation is needed; generated image assets must be committed with the source.
+
+One-time repository/domain setup:
+
+1. In [Settings > Pages](https://github.com/aidanwyber/music.aidanwyber.xyz/settings/pages), select **GitHub Actions** as the publishing source. The workflow publishes `./docs` as an artifact; do not select branch-based `/docs` publishing.
+2. Set **Custom domain** to **aidanwyber.xyz** in those settings. `public/CNAME` is copied into `docs/CNAME`, but an Actions deployment still needs the custom domain configured in GitHub's settings.
+3. At the domain's DNS provider, point the apex (`@`) at GitHub Pages using these four A records: `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`. Alternatively use an ALIAS/ANAME to `aidanwyber.github.io`. These are DNS provider changes, not repository files.
+4. Enable **Enforce HTTPS** in Pages settings once GitHub has verified DNS and issued the certificate.
+5. Commit and push the source and public assets to `main`; check **Actions > Build and deploy GitHub Pages**. The canonical origin stays `https://aidanwyber.xyz`, so assets use root paths without a repository-name prefix.
+
+`docs/` is intentionally ignored: CI builds it fresh from the committed source. This repository setup does not change account settings or DNS and has not published a deployment.
+
+References: [GitHub's custom workflow instructions](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages) and [custom domain instructions](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site).

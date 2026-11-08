@@ -18,7 +18,7 @@ const media =
 export default defineConfig({
 	plugins: [
 		sveltekit({
-			adapter: adapter({ pages: 'build', assets: 'build', strict: true }),
+			adapter: adapter({ pages: 'docs', assets: 'docs', strict: true }),
 			preprocess: vitePreprocess(),
 			files: { assets: 'public' },
 			paths: { origin: site.url },

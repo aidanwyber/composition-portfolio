@@ -57,7 +57,7 @@
 		<h2 class="contact-heading" id="contact-heading">
 			{#each copy.contact.headline as line}<span>{line}</span>{/each}
 		</h2>
-		<p class="contact-note">{copy.contact.supporting}</p>
+		<p class="contact-note">{#each copy.contact.supporting as sentence}<span>{sentence}</span>{/each}</p>
 		<div class="contact-actions">
 			<a class="contact-button" href={`mailto:${site.email}`}>
 				{copy.contact.action} <span aria-hidden="true">↗</span>

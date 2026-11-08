@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { existsSync, readFileSync } from 'node:fs';
-const xml = readFileSync('build/sitemap.xml', 'utf8');
+const xml = readFileSync('docs/sitemap.xml', 'utf8');
 const urls = [...xml.matchAll(/<loc>(.*?)<\/loc>/g)].map(
 	match => new URL(match[1]),
 );
@@ -14,7 +14,7 @@ const entities = new Map();
 const titles = new Set();
 const contactEmail = readFileSync('src/data/site.ts', 'utf8').match(/email: '([^']+)'/)[1];
 for (const url of urls) {
-	const html = readFileSync(`build${url.pathname}index.html`, 'utf8');
+	const html = readFileSync(`docs${url.pathname}index.html`, 'utf8');
 	const lang = url.pathname.split('/')[1];
 	assert.ok(html.includes(`<html lang="${lang}">`));
 	assert.ok(html.includes(`<link rel="canonical" href="${url.href}"`));
@@ -64,7 +64,7 @@ for (const url of urls) {
 				'Preserve the supplied year precision',
 			);
 			assert.ok(entity.creator['@id'] === person['@id']);
-			assert.ok(existsSync(`build${new URL(entity.image).pathname}`));
+			assert.ok(existsSync(`docs${new URL(entity.image).pathname}`));
 			assert.ok(
 				html.includes(entity.name),
 				'Schema reflects visible content',
@@ -81,7 +81,7 @@ for (const url of urls) {
 		}
 	}
 	for (const match of html.matchAll(/(?:src|href)="(\/assets\/[^"?#]+)"/g))
-		assert.ok(existsSync(`build${decodeURI(match[1])}`), match[1]);
+		assert.ok(existsSync(`docs${decodeURI(match[1])}`), match[1]);
 	assert.ok(!html.includes('react-dom'));
 	assert.ok(!html.includes('your-email@example.com'), 'No placeholder enquiry address');
 	if (url.pathname === `/${lang}/`) {
@@ -106,7 +106,8 @@ for (const url of urls) {
 		assert.ok(!data['@graph'].some(entity => entity['@type'] === 'FAQPage'), 'Shared FAQ markup is limited to the homepages');
 	}
 	if (/\/(etudes-voor-cello|de-toekomst-in)\/$/.test(url.pathname)) {
-		assert.ok(!/\sdownload(?:[=\s>])/.test(html), 'Scores are viewed online, without a download action');
+		assert.ok(!/<a\b[^>]*href="[^"]+\.pdf"[^>]*\sdownload(?:[=\s>])/.test(html), 'Score PDFs are viewed online');
+		assert.match(html, /<a\b[^>]*href="\/assets\/scores\/[^\"]+\.mp3"[^>]*\sdownload(?:[=\s>])/, 'Demo can be downloaded');
 		assert.match(html, /href="\/assets\/scores\/[^"]+\.pdf" target="_blank"/, 'PDF opens in a new tab');
 		assert.ok(/href="\/assets\/scores\/[^\"]+\.pdf"/.test(html), 'Real score PDF is linked');
 		assert.ok(!html.includes('Recording forthcoming') && !html.includes('Opname volgt'));
@@ -114,12 +115,15 @@ for (const url of urls) {
 	}
 }
 assert.ok(
-	readFileSync('build/robots.txt', 'utf8').includes(
+	readFileSync('docs/robots.txt', 'utf8').includes(
 		`Sitemap: ${urls[0].origin}/sitemap.xml`,
 	),
 );
-assert.ok(readFileSync('build/404.html', 'utf8').includes('noindex'));
-assert.ok(existsSync('build/assets/social/portfolio.png'));
+assert.ok(readFileSync('docs/404.html', 'utf8').includes('noindex'));
+assert.ok(existsSync('docs/assets/social/portfolio.png'));
+assert.ok(existsSync('docs/.nojekyll'), 'Static assets bypass Jekyll');
+assert.equal(readFileSync('docs/CNAME', 'utf8').trim(), urls[0].hostname, 'Custom domain matches canonical origin');
+assert.match(readFileSync('docs/index.html', 'utf8'), /http-equiv="refresh" content="0;url=\/nl\/"/, 'Pages root has a static redirect');
 console.log(
 	`Verified ${urls.length} prerendered routes, metadata, canonical/hreflang links, sitemap, assets and JSON-LD entity consistency.`,
 );

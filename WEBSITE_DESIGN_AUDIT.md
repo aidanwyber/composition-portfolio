@@ -28,7 +28,7 @@ Spotify's remote document was substituted during player-geometry checks. Opening
 | Listening             | Native audio/video components exist, but the observed homepages render zero native audio/video elements because those files are absent. Each album has platform links and a user-opened Spotify embed.                                  |
 | Reusable components   | `Shell`, `Albums`, `ProjectRow`, `Showreel`, `Image`, `Audio`, `Video`, `SpotifyPlayer`, `ListeningLinks` and `Seo`, all under `src/components/`. Data, locale copy and rendering are already separated.                                |
 | Responsive/motion     | Breakpoints at 600, 700, 768 and 900px; no observed horizontal overflow at inspected sizes. Wave artwork is static. Smooth scrolling is enabled only without reduced-motion preference.                                                 |
-| Publishing foundation | Prerendered HTML, canonical/hreflang metadata, sitemap, structured data and 404 handling exist. The configured public origin is `https://music.aidanwyber.xyz`. No deployment was performed or inspected.                               |
+| Publishing foundation | Prerendered HTML, canonical/hreflang metadata, sitemap, structured data and 404 handling exist. The configured public origin is `https://aidanwyber.xyz`. No deployment was performed or inspected.                                     |
 
 ### Measured hierarchy
 

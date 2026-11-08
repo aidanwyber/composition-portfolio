@@ -68,6 +68,7 @@ export const nl: Copy = {
 		videoLabel: 'Video',
 	},
 	scores: {
+		downloadDemo: 'Download demo',
 		demo: 'Luister naar de demo',
 		title: 'Partituren',
 		preview: 'Eerste pagina van de partituur',
@@ -170,8 +171,7 @@ export const nl: Copy = {
 	contact: {
 		title: 'Contact',
 		headline: ['Welk verhaal vraagt', 'om muziek?'],
-		supporting:
-			'Vertel me over je project. Een eerste idee of ruwe montage is genoeg.',
+		supporting: ['Vertel me over je project.', 'Een eerste idee of ruwe montage is genoeg.'],
 		action: 'Bespreek je project',
 		socials: 'Sociale profielen',
 	},

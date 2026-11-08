@@ -1,7 +1,7 @@
 import { createServer } from 'node:http';
 import { createReadStream, readFileSync, existsSync, statSync } from 'node:fs';
 import { resolve, sep, extname } from 'node:path';
-const root = resolve('build');
+const root = resolve('docs');
 const port = Number(process.env.PORT || 5174);
 const types = {
 	'.html': 'text/html; charset=utf-8',
